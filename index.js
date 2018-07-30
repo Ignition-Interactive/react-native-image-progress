@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, Image, StyleSheet, View, Text } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
   centered: {
