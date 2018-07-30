@@ -220,7 +220,7 @@ export const createImageProgress = ImageComponent =>
 
       return (
         <View style={style} ref={this.handleRef}>
-          {!this.state.error ? 
+          {error ? <View style={styles.centered}><ActivityIndicator size="small" /></View> : 
           <ImageComponent
             {...props}
             key={sourceKey}
@@ -231,9 +231,8 @@ export const createImageProgress = ImageComponent =>
             onLoadEnd={this.handleLoadEnd}
             source={source}
             style={[StyleSheet.absoluteFill, imageStyle]}
-          /> : <View style={styles.centered}>
-            <ActivityIndicator size="small" />
-          </View> }
+          />
+          } 
           {indicatorElement}
           {children}
         </View>
