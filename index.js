@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, View, Text } from 'react-native';
 
 const styles = StyleSheet.create({
   centered: {
@@ -26,7 +26,7 @@ export const createImageProgress = ImageComponent =>
       renderError: PropTypes.func,
       source: PropTypes.any,
       style: PropTypes.any,
-      imageStyle: PropTypes.any,
+      imageStyle: PropTypes.object,
       threshold: PropTypes.number,
     };
 
@@ -220,6 +220,7 @@ export const createImageProgress = ImageComponent =>
 
       return (
         <View style={style} ref={this.handleRef}>
+          {!this.state.error ? 
           <ImageComponent
             {...props}
             key={sourceKey}
@@ -230,7 +231,9 @@ export const createImageProgress = ImageComponent =>
             onLoadEnd={this.handleLoadEnd}
             source={source}
             style={[StyleSheet.absoluteFill, imageStyle]}
-          />
+          /> : <View style={styles.centered}>
+            <ActivityIndicator size="small" />
+          </View> }
           {indicatorElement}
           {children}
         </View>
